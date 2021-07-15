@@ -12,7 +12,7 @@
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite",
-    "prepublish": "vite build",
+    "prepublishOnly": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {
