@@ -2,15 +2,25 @@
   "name": "reactjs-pagination-component",
   "version": "0.0.2",
   "description": "A pagination component built using React.js",
-  "author": "ghoshnirmalya",
   "license": "MIT",
+  "author": "ghoshnirmalya",
+  "main": "./dist/component.umd.js",
+  "module": "./dist/component.es.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
+    "dev": "vite",
+    "prepublish": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.4.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
   },
   "devDependencies": {
     "@types/node": "^16.3.2",
@@ -20,8 +30,10 @@
     "typescript": "^4.3.2",
     "vite": "^2.4.2"
   },
-  "peerDependencies": {
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+  "exports": {
+    ".": {
+      "import": "./dist/component.es.js",
+      "require": "./dist/component.umd.js"
+    }
   }
 }
