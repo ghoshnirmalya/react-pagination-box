@@ -1,44 +1,53 @@
 /** @jsx jsx */
-import { css, jsx } from '@emotion/core'
+import { css, jsx } from "@emotion/react";
+import { FC } from "react";
 
-const ReactPaginationComponent = ({
+interface IProps {
+  onChange: (number: number) => void;
+  currentPage: number;
+  totalPages: number;
+  color: string;
+  isLoading: boolean;
+}
+
+const ReactPaginationComponent: FC<IProps> = ({
   onChange,
   currentPage,
   totalPages,
   color,
-  isLoading
+  isLoading,
 }) => {
   // The logic for generating pagination is taken from
   // https://gist.github.com/kottenator/9d936eb3e4e3c3e02598
 
-  const pageBuffer = 3
-  const startPage = currentPage - pageBuffer
-  const endPage = currentPage + pageBuffer + 1
-  const range = []
-  const rangeWithDots = []
-  let l
+  const pageBuffer = 3;
+  const startPage = currentPage - pageBuffer;
+  const endPage = currentPage + pageBuffer + 1;
+  const range = [];
+  const rangeWithDots = [];
+  let l;
 
   for (let i = 1; i <= totalPages; i++) {
     if (i == 1 || i == totalPages || (i >= startPage && i < endPage)) {
-      range.push(i)
+      range.push(i);
     }
   }
 
   for (let i of range) {
     if (l) {
       if (i - l === pageBuffer) {
-        rangeWithDots.push(l + 1)
+        rangeWithDots.push(l + 1);
       } else if (i - l !== 1) {
-        rangeWithDots.push('...')
+        rangeWithDots.push("...");
       }
     }
-    rangeWithDots.push(i)
+    rangeWithDots.push(i);
 
-    l = i
+    l = i;
   }
 
   if (isLoading) {
-    return false
+    return null;
   }
 
   return (
@@ -61,22 +70,20 @@ const ReactPaginationComponent = ({
           >
             <button
               data-page-number={pageNumber}
-              onClick={() => onChange(pageNumber)}
-              disabled={pageNumber === '...'}
+              onClick={() => onChange(pageNumber as number)}
+              disabled={pageNumber === "..."}
               css={css`
                 border: 1px solid ${color};
                 border-radius: 2px;
-                color: ${currentPage === pageNumber ? '#fff' : color};
+                color: ${currentPage === pageNumber ? "#fff" : color};
                 padding: 5px 10px;
                 background-color: ${currentPage === pageNumber
                   ? color
-                  : 'transparent'};
+                  : "transparent"};
                 font-size: inherit;
-
                 :hover {
                   cursor: pointer;
                 }
-
                 :disabled {
                   border: none;
                   cursor: not-allowed;
@@ -86,10 +93,10 @@ const ReactPaginationComponent = ({
               {pageNumber}
             </button>
           </li>
-        )
+        );
       })}
     </ul>
-  )
-}
+  );
+};
 
-export default ReactPaginationComponent
+export default ReactPaginationComponent;
