@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/component.tsx"),
-      name: "reactjs-pagination-component",
+      name: "react-pagination-box",
     },
     rollupOptions: {
       external: ["react", "react-dom"],

@@ -1,11 +1,11 @@
-# reactjs-pagination-component
+# react-pagination-box
 
 > A pagination component built using React.js
 
 ## Install
 
 ```bash
-npm install --save reactjs-pagination-component
+npm install --save react-pagination-box
 ```
 
 ## Usage
@@ -13,7 +13,7 @@ npm install --save reactjs-pagination-component
 ```jsx
 import React, { Component } from "react";
 
-import MyComponent from "reactjs-pagination-component";
+import MyComponent from "react-pagination-box";
 
 class Example extends Component {
   render() {
